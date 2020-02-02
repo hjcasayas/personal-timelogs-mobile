@@ -14,7 +14,7 @@ const routeConfigs = {
 };
 
 const stackNavigatorConfigs = {
-  initialRoutename: 'Login',
+  initialRouteName: 'Registration',
   headerMode: 'none'
 };
 
