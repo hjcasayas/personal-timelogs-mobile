@@ -23,7 +23,7 @@ const LoginScreen = props => {
 
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
-      <KeyboardAvoidingView style={styles.container}>
+      <KeyboardAvoidingView style={styles.container} type='padding'>
         <Text style={styles.text} h3>
           Login
         </Text>

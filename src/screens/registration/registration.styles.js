@@ -14,6 +14,9 @@ export default EStyleSheet.create({
     marginBottom: '1rem'
   },
   password: {
+    marginBottom: '1rem'
+  },
+  confirmPassword: {
     marginBottom: '2rem'
   },
   button: {
