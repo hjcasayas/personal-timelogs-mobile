@@ -1,5 +1,5 @@
 const theme = {
-    $textColor: 'red',
+  $rem: 16
 };
 
 export { theme };

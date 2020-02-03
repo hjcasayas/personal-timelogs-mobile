@@ -1,25 +1,68 @@
-import React, { PureComponent } from 'react';
-import {View} from 'react-native';
+import React, { useState } from 'react';
+import {
+  View,
+  KeyboardAvoidingView,
+  TouchableWithoutFeedback,
+  Keyboard
+} from 'react-native';
 import { Text, Button, Input } from 'react-native-elements';
 import styles from './login.styles';
 
-class LoginScreen extends PureComponent {
+const handleLogin = (email, password) => {
+  console.log({ email, password });
+};
 
-  handleLogin = () => {
-    console.log('Login')
-  }
+// Funtion Component
+const LoginScreen = props => {
+  // Hooks
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
-  render() {
-    const { navigation } = this.props;
-    return (
-      <View style={styles.container}> 
-        <Text style={styles.text} h3>Login</Text>
-        <Input placeholder="Enter your email" label="Email" containerStyle={styles.email} />
-        <Input placeholder="Enter your passsord" label="Password"  containerStyle={styles.password}/>
-        <Button onPress={this.handleLogin} buttonStyle={styles.button} title="Sign In" />
-      </View>
-    );
-  }
-}
+  const { navigation } = props;
+  console.log(email);
+
+  return (
+    <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+      <KeyboardAvoidingView style={styles.container}>
+        <Text style={styles.text} h3>
+          Login
+        </Text>
+        <Input
+          placeholder='Enter your email'
+          containerStyle={styles.email}
+          onChangeText={setEmail}
+          autoCompleteType='off'
+          autoCapitalize='none'
+          label='Email'
+          value={email}
+        />
+        <Input
+          placeholder='Enter your passsord'
+          containerStyle={styles.password}
+          onChangeText={setPassword}
+          textContentType='password'
+          secureTextEntry={true}
+          autoCompleteType='off'
+          autoCapitalize='none'
+          label='Password'
+          value={password}
+        />
+        <Button
+          onPress={() => {
+            handleLogin(email, password);
+          }}
+          buttonStyle={styles.button}
+          containerStyle={styles.buttonContainer}
+          title='SIGN IN'
+        />
+        <Button
+          title={`Don't have an account yet?`}
+          onPress={() => navigation.navigate('Registration')}
+          type='clear'
+        />
+      </KeyboardAvoidingView>
+    </TouchableWithoutFeedback>
+  );
+};
 
 export default LoginScreen;
